@@ -7,7 +7,7 @@
 
 
 <h1>Suggetions</h1>
-- maintain same package name
-- after frok take code insted of file
-- after updating code, apply changes manually in your repo.
+- maintain same package name <br>
+- after frok take code insted of file<br>
+- after updating code, apply changes manually in your repo.<br>
 - then give me a pull request 😉
