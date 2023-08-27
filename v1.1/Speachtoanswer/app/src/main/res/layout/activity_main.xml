@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:barrierMargin="10dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="470dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hapticFeedbackEnabled="true"
+        android:inputType="text"
+        android:soundEffectsEnabled="true"
+        android:text=" "
+        app:circularflow_defaultRadius="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="478dp"
+        android:layout_height="650dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="4dp"
+        android:background="#26A69A"
+        android:backgroundTint="#26A69A"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="50dp"
+        android:fontFamily="monospace"
+        android:foregroundTint="#26A69A"
+        android:includeFontPadding="true"
+        android:isScrollContainer="true"
+        android:padding="10dp"
+        android:scrollbarStyle="insideInset"
+        android:text=" "
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHighlight="#6AFFFFFF"
+        android:textIsSelectable="true"
+        android:textSize="20sp"
+        android:verticalScrollbarPosition="defaultPosition"
+        app:circularflow_defaultRadius="20dp"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:layout_width="490dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="68dp"
+        android:indeterminateTint="#5C6BC0"
+        android:progressBackgroundTintMode="multiply"
+        android:progressTint="#00FF0000"
+        android:progressTintMode="add"
+        android:secondaryProgressTint="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/et"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
