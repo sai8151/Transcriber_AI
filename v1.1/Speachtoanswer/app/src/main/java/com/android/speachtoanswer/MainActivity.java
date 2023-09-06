@@ -4,7 +4,6 @@ package com.android.speachtoanswer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -30,8 +29,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 ImageButton imgBtn;
@@ -44,7 +41,7 @@ TextView tv;
     String plamit;
     ProgressBar pb;
 int count=0;
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,12 +58,12 @@ int count=0;
         sp.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle bundle) {
-
+                tv.setText("\nready to listen\n");
             }
 
             @Override
             public void onBeginningOfSpeech() {
-
+                tv.setText("\nlistening\n");
             }
 
             @Override
@@ -76,7 +73,7 @@ int count=0;
 
             @Override
             public void onBufferReceived(byte[] bytes) {
-
+                tv.append("quary started");
             }
 
             @Override
@@ -86,7 +83,7 @@ int count=0;
 
             @Override
             public void onError(int i) {
-
+                tv.append("\nError!\n");
             }
 
             @Override
@@ -102,12 +99,12 @@ int count=0;
 
             @Override
             public void onPartialResults(Bundle bundle) {
-
+                tv.append("\npartial results\n");
             }
 
             @Override
             public void onEvent(int i, Bundle bundle) {
-
+                tv.append("event initiated");
             }
         });
     }
@@ -142,13 +139,12 @@ int count=0;
             }
         }
     }
-
-    private class NetworkTask extends AsyncTask<Void, Void, String> {
+    public class NetworkTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
             pb.setAlpha(1);
             pb.setIndeterminate(true);
-            String url = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=YOUR_API_KEY";
+            String url = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyC9aC8pAlJ6FwGReHJZy7YyhO4ZB68PRVc";
             URL obj = null;
             try {
                 obj = new URL(url);
@@ -189,21 +185,6 @@ int count=0;
                     }
                     tv.setText(response.toString());
                     if (response != null) {
-//                        try {
-//                            JSONObject responseObject = new JSONObject(String.valueOf(response));
-//                            JSONArray candidatesArray = responseObject.getJSONArray("candidates");
-//
-//                            if (candidatesArray.length() > 0) {
-//                                JSONObject candidateObject = candidatesArray.getJSONObject(0);
-//                                String output = candidateObject.getString("output");
-//
-//                                // Set the "output" text in your TextView
-//                                tv.setText(output);
-//                            }
-//                        }  catch (JSONException e) {
-//                            e.printStackTrace();
-//                            tv.append(e.getMessage().toString());
-//                        }
                         tv.setText(response);
                     }
                     return response.toString();
@@ -224,7 +205,7 @@ int count=0;
         @Override
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
-            if (response != null) {
+            if (response.toString() != null) {
                 try {
                     JSONArray candidatesArray = new JSONArray(response);
                     if (candidatesArray.length() > 0) {
@@ -238,9 +219,6 @@ int count=0;
                 }
             }
         }
-
     }
-
-
 }
 
